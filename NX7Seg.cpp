@@ -7,10 +7,11 @@
 #include <ASCIIDic.h>
 #include "NX7Seg.h"
 
-nx7seg::nx7seg(int latch, int clk, int data){
+nx7seg::nx7seg(int latch, int clk, int data, bool _reverse){
   latchPin  = byte(latch);
   clockPin  = byte(clk);
   dataPin = byte(data);
+  reverse = _reverse;
   clear();
 }
 
@@ -28,7 +29,10 @@ void nx7seg::send(){
   for(int i=0;i < n_7seg; i++){
     digitalWrite(latchPin, LOW);
     shiftOut(dataPin, clockPin, MSBFIRST, buffer_data[i]);
-    shiftOut(dataPin, clockPin, MSBFIRST, digits[i] );
+    if(reverse)
+      shiftOut(dataPin, clockPin, MSBFIRST, digits[n_7seg-1-i]);
+    else
+      shiftOut(dataPin, clockPin, MSBFIRST, digits[i] );
     digitalWrite(latchPin, HIGH);
   }
 }

@@ -19,7 +19,7 @@
 
 class nx7seg {
   public:
-    nx7seg( int latch, int clk, int data); 
+    nx7seg( int latch, int clk, int data, bool _reverse = false); 
     ~nx7seg(){};
     void buffer(int n, byte out);
     void send();
@@ -36,6 +36,7 @@ class nx7seg {
       
   private:
     byte n_7seg = NUMBER_OF_SEG;
+    bool reverse;
     byte latchPin;
     byte clockPin;
     byte dataPin;
