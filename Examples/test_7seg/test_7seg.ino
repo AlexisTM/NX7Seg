@@ -16,9 +16,33 @@ void setup ()
   Serial.begin(9600);
 }
  
-/* Main program */
-void loop()
-{
+
+
+void testFloat(){
+  float i;
+  for(i = 1.235; i<15;i++){
+    my4x7seg.writeFloat(i);
+    my4x7seg.refresh(1000);
+  }
+  i += 0.5;
+  for(; i>-15;i--){
+    my4x7seg.writeFloat(i);
+    my4x7seg.refresh(1000);
+  }
+}
+
+void testInt(){
+  my4x7seg.writeInt(-12346);
+  my4x7seg.refresh(1000);
+  my4x7seg.writeInt(46);
+  my4x7seg.refresh(1000);
+  my4x7seg.writeInt(-6);
+  my4x7seg.refresh(1000);
+  my4x7seg.writeInt(19969);
+  my4x7seg.refresh(1000);
+}
+
+void testAlphabet(){
   char data[5] = "a";
   int i=65;
   while( i<100 ) {
@@ -31,3 +55,10 @@ void loop()
   }
 }
 
+/* Main program */
+void loop()
+{
+  testFloat();
+  //testInt();
+  //testAlphabet();
+}

@@ -11,11 +11,14 @@ nx7seg::nx7seg(int latch, int clk, int data){
   latchPin  = byte(latch);
   clockPin  = byte(clk);
   dataPin = byte(data);
+  clear();
+}
+
+void nx7seg::clear(){
   for(int i=0;i < n_7seg; i++){
     buffer(i, 0xFF);
   }
 }
-
 
 void nx7seg::buffer(int n, byte in){
   buffer_data[n] = in;
@@ -40,6 +43,8 @@ byte nx7seg::cypher(char value){
     return dic_letters[val-97];
   if(val == 46)
     return dic_numbers[10];
+  if(val == 45)
+    return dic_numbers[11];
   return 0xFF; 
 }
 
@@ -52,6 +57,7 @@ void nx7seg::refresh(int time){
 }
 
 void nx7seg::write(char value[], int sizeArray){
+  clear();
   int posChar = 0;
   for(int i = 0; i< n_7seg; i++){
     // No overflow
@@ -82,13 +88,56 @@ void nx7seg::writeChar(char value, int digit, bool point){
 }
 
 /* Any INT */
-void nx7seg::write(int value){
-  // NOT IMPLEMENTED
+// Value : int to convert 
+// Result : Char to store the result
+// ToWrite : Limit of chars
+char nx7seg::intToChars(int value, char* result, int toWrite){
+  // Handle negative
+  if(value < 0){
+    toWrite--;
+  }
+
+  // Avoid overflow
+  int MaxValue =  pow(10,toWrite);
+  while(abs(value) >= MaxValue){
+    value /= 10;
+  }
+  // Print int to char
+  dtostrf(value, toWrite+1, 0, result);
+}
+
+void nx7seg::writeInt(int value){
+  char data[5];
+  intToChars(value, data, 4);
+  write(data, 4);
 }
 
 /* Any FLOAT */
-void nx7seg::write(float value){
-  // NOT IMPLEMENTED
+char nx7seg::floatToChars(float value, char* result, int toWrite){
+  // Handle negative
+  if(value < 0){
+    toWrite--;
+  }
+
+  // Avoid overflow
+  int MaxInt = ceil(log(value))+1;
+  while(MaxInt > toWrite){
+    value /= 10;
+    MaxInt--;
+  }
+
+  int MaxFloat = toWrite-MaxInt;
+  
+  // Print int to char
+  dtostrf(value, toWrite+1, MaxFloat, result);
+  
+}
+
+void nx7seg::writeFloat(float value, int toWrite){
+  toWrite++;
+  char data[toWrite+1];
+  floatToChars(value, data, toWrite);
+  write(data, toWrite);
 }
 
 /* From 0 to 10 */

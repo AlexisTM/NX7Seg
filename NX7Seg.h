@@ -25,11 +25,14 @@ class nx7seg {
     void send();
     byte cypher(char value);
     void refresh(int time = 500);
-    void write(int value);
-    void write(float value);
+    void writeInt(int value);
+    void writeFloat(float value, int toWrite = 4);
     void write(char value[], int sizeArray);
     void writeChar(char value, int digit, bool point = false);
     void writeDigit(int value, int digit, bool point = false);
+    char floatToChars(float value, char* result, int toWrite = 4);
+    char intToChars(int value, char* result, int toWrite = 4);
+    void clear();
       
   private:
     byte n_7seg = NUMBER_OF_SEG;
