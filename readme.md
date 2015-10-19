@@ -12,8 +12,8 @@ Commas are shown by a . directly in the last char.
 Functions
 --------
 
-### nx7seg nx7seg(latch, clock, data)
-Constructor : If you don't have a latch (not a 595 shift register), give a pin and don't use it. 
+### nx7seg nx7seg(int latch, int clock, int data, bool reverse = false)
+Constructor : If you don't have a latch (not a 595 shift register), give a pin and don't use it. If the 7 segment is reverse, then gives the argument reverse to true.
 
 Latch could be named : RCLCK
 
