@@ -9,6 +9,41 @@ Actually you only have the ability to write `char` and `char[]`.
 
 Commas are shown by a . directly in the last char.
 
+Example
+---------
+
+
+```
+#include <ASCIIDic.h>
+#include <NX7Seg.h>
+
+#define LATCH_DIO 4
+#define CLK_DIO 7
+#define DATA_DIO 8
+
+nx7seg my4x7seg = nx7seg(LATCH_DIO,CLK_DIO,DATA_DIO);
+ 
+void setup ()
+{
+  /* Set DIO pins to outputs */
+  pinMode(LATCH_DIO,OUTPUT);
+  pinMode(CLK_DIO,OUTPUT);
+  pinMode(DATA_DIO,OUTPUT);
+}
+
+/* Main program */
+void loop()
+{
+  my4x7seg.writeInt(46);
+  my4x7seg.refresh(1000);
+  my4x7seg.write("abcd",4);
+  my4x7seg.refresh(1000);
+  my4x7seg.writeFloat(i);
+  my4x7seg.refresh(1000);
+}
+```
+
+
 Functions
 --------
 
