@@ -22,16 +22,19 @@ Clock could be named : SCLK
 ### void buffer(digit, data)
 Write a byte in the digits buffer
 
+### void clear()
+Clear the 7 segment buffer
+
 ### void send()
 Show the digit buffer on the 7 segment : Less than a millisecond. Use this if you are time dependant. Call it multiple times between time dependant steps to show the message.
 
 ### byte cypher(char)
 Convert a char into a byte coded for the 7 segments
 
-### void refresh(time = 500) // in ms
-Show the digit buffer on the 7 segment during some time (in ms). It is approximative. It uses delay and nothing else is done.
+### void refresh(time = 500) // APPROXIMATIVE in ms
+Show the digit buffer on the 7 segments during some time (in ms). It is approximative. It is a loop with delay(1), time times. Nothing can be done while showing numbers.
 
-### void write(char[], int sizeArray)
+### void write(char[], int sizeArray = 4)
 Write a char[] into the buffer array, coded by cypher. Specify the size array.
 
 ### void writeChar(char value, int digit, bool point = false);
@@ -40,9 +43,14 @@ Write a char into the buffer array, coded by cypher, at the digit wanted. If wan
 ### void writeDigit(int value, int digit, bool point = false);
 Write a number (0 to 10) into the buffer array, coded by cypher, at the digit wanted. If wanted, add a point.
 
+### void writeFloat(float value, int toWrite = 4)
+Write the float value to 7 segment buffer. (refresh() or send() to show)
+
+### void writeInt(int value, int toWrite = 4)
+Write the float value to 7 segment buffer. (refresh() or send() to show)
+
 ## TODO 
 * Change the direction of the chars. Right to left instead of left to right for some 3641BS soldered differently.
-* Add write(int) and write(float) functions
 
 Credits
 -------

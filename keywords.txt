@@ -8,24 +8,25 @@
 
 nx7seg KEYWORD1
 
-
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
 nx7seg KEYWORD2
 buffer KEYWORD2
+clear KEYWORD2
 send KEYWORD2
 cypher KEYWORD2
 refresh KEYWORD2
 write KEYWORD2
+writeChar KEYWORD2
+writeDigit KEYWORD2
+writeFloat KEYWORD2
+writeInt KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
 #######################################
 
-dic_letters LITTERAL1
-dic_numbers LITTERAL1
-dic_comma LITTERAL1
 
 
