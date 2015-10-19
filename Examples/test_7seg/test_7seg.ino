@@ -1,5 +1,5 @@
 #include <ASCIIDic.h>
-#include "NX7Seg.h"
+#include <NX7Seg.h>
 
 #define LATCH_DIO 4
 #define CLK_DIO 7
