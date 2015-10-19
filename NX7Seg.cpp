@@ -120,7 +120,7 @@ char nx7seg::floatToChars(float value, char* result, int toWrite){
   }
 
   // Avoid overflow
-  int MaxInt = ceil(log(value))+1;
+  int MaxInt = ceil(log(abs(value))/log(10))+1;
   while(MaxInt > toWrite){
     value /= 10;
     MaxInt--;
@@ -129,7 +129,7 @@ char nx7seg::floatToChars(float value, char* result, int toWrite){
   int MaxFloat = toWrite-MaxInt;
   
   // Print int to char
-  dtostrf(value, toWrite+1, MaxFloat, result);
+  dtostrf(value, toWrite, MaxFloat, result);
   
 }
 

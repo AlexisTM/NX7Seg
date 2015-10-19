@@ -13,7 +13,6 @@ void setup ()
   pinMode(LATCH_DIO,OUTPUT);
   pinMode(CLK_DIO,OUTPUT);
   pinMode(DATA_DIO,OUTPUT);
-  Serial.begin(9600);
 }
  
 
@@ -43,7 +42,7 @@ void testInt(){
 }
 
 void testAlphabet(){
-  char data[5] = "a";
+  char data[5];
   int i=65;
   while( i<100 ) {
     for(int k=0; k<4;k++){
@@ -58,7 +57,7 @@ void testAlphabet(){
 /* Main program */
 void loop()
 {
+  testAlphabet();
+  testInt();
   testFloat();
-  //testInt();
-  //testAlphabet();
 }
