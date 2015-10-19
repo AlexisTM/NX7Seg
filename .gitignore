@@ -43,5 +43,5 @@ Temporary Items
 .apdisk
 
 # Dev
-/Examples/*.cpp
-/Examples/*.h
+/Examples/*/*.cpp
+/Examples/*/*.h
