@@ -102,18 +102,20 @@ char nx7seg::intToChars(int value, char* result, int toWrite){
   }
 
   // Avoid overflow
-  int MaxValue =  pow(10,toWrite);
-  while(abs(value) >= MaxValue){
+  int MaxInt = ceil(log(abs(value))/log(10))+1;
+  while(MaxInt > toWrite){
     value /= 10;
+    MaxInt--;
   }
+  
   // Print int to char
-  dtostrf(value, toWrite+1, 0, result);
+  dtostrf(value, toWrite, 0, result);
 }
 
-void nx7seg::writeInt(int value){
-  char data[5];
-  intToChars(value, data, 4);
-  write(data, 4);
+void nx7seg::writeInt(int value, int toWrite){
+  char data[toWrite+1];
+  intToChars(value, data, toWrite);
+  write(data, toWrite);
 }
 
 /* Any FLOAT */
@@ -134,7 +136,6 @@ char nx7seg::floatToChars(float value, char* result, int toWrite){
   
   // Print int to char
   dtostrf(value, toWrite, MaxFloat, result);
-  
 }
 
 void nx7seg::writeFloat(float value, int toWrite){

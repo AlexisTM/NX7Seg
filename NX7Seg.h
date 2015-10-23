@@ -25,7 +25,7 @@ class nx7seg {
     void send();
     byte cypher(char value);
     void refresh(int time = 500);
-    void writeInt(int value);
+    void writeInt(int value, int toWrite = 4);
     void writeFloat(float value, int toWrite = 4);
     void write(char value[], int sizeArray);
     void writeChar(char value, int digit, bool point = false);
