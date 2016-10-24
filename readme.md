@@ -1,7 +1,7 @@
 Arduino ASCII Driver for 3641BS 4x 7 segments
 =======================================
 
-*Do not forget to include the ASCII Dictionary*
+## *Do not forget to include the [ASCII Dictionary](github.com/AlexisTM/ASCIIDic)*
 
 You are now able to drive your 3641BS 4 times 7 segments driven by two 595 shift registers easily.
 
