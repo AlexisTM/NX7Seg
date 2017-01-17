@@ -13,7 +13,7 @@ Example
 ---------
 
 
-```
+```C++
 #include <ASCIIDic.h>
 #include <NX7Seg.h>
 
