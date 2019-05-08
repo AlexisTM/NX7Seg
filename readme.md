@@ -61,7 +61,7 @@ Write a byte in the digits buffer
 Clear the 7 segment buffer
 
 ### void send()
-Show the digit buffer on the 7 segment : Less than a millisecond. Use this if you are time dependant. Call it multiple times between time dependant steps to show the message.
+Show the digit buffer on the 7 segment : Less than a millisecond. Use this if you are time dependent. Call it multiple times between time dependent steps to show the message.
 
 ### byte cypher(char)
 Convert a char into a byte coded for the 7 segments
